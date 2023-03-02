@@ -10,10 +10,15 @@
 
 <body>
     @for ($i = 1; $i <= 50; $i++) 
-        <div class="row" style="margin-bottom: 8px">
+        <div class="row">
             <div class="col-3">
                 <center>
                     {!! QrCode::size(165)->generate('http://177.11.150.210:8001/webApp?mesa=' . $i) !!}
+                    <h3>
+                        <strong>
+                            MESA {!! $i !!}
+                        </strong>
+                    </h3>
                 </center>
                 @php
                 $i++;
@@ -22,6 +27,11 @@
             <div class="col-3">
                 <center>
                     {!! QrCode::size(165)->generate('http://177.11.150.210:8001/webApp?mesa=' . $i) !!}
+                    <h3>
+                        <strong>
+                            MESA {!! $i !!}
+                        </strong>
+                    </h3>
                 </center>
                 @php
                 $i++;
@@ -30,6 +40,11 @@
             <div class="col-3">
                 <center>
                     {!! QrCode::size(165)->generate('http://177.11.150.210:8001/webApp?mesa=' . $i) !!}
+                    <h3>
+                        <strong>
+                            MESA {!! $i !!}
+                        </strong>
+                    </h3>
                 </center>
                 @php
                 $i++;
@@ -38,6 +53,11 @@
             <div class="col-3">
                 <center>
                     {!! QrCode::size(165)->generate('http://177.11.150.210:8001/webApp?mesa=' . $i) !!}
+                    <h3>
+                        <strong>
+                            MESA {!! $i !!}
+                        </strong>
+                    </h3>
                 </center>
             </div>
         </div>
