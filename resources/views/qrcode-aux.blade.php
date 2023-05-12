@@ -1,50 +1,22 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Lista de QRCodes</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-    <style>
-        @font-face {
-            font-family: "PlayfairDisplay";
-            src: url("{{ asset('/assets/fonts/PlayfairDisplay-Bold.ttf') }}") format("truetype");
-        }
-        @font-face {
-            font-family: "TiltNeon";
-            src: url("{{ asset('/assets/fonts/TiltNeon-Regular.ttf') }}") format("truetype");
-        }
-
-        .titulo {
-            font-family: "PlayfairDisplay";
-        }
-
-        h3, h5, h6 {
-            font-family: "TiltNeon";
-            color: red;
-            margin-top: 3px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
-
 <body>
-    @php
-        $url = 'https://sistemas.countryclubedegoias.com.br/webApp/components/menu.jsf?mesa=';
-        $totalQrCodesPagina = 0;
-    @endphp
-    @for ($i = 0; $i < count($qrCodes); $i++)
-            @if ($i == 9 || $totalQrCodesPagina == 11)
-                <div class="row" style="margin-top: 27px; margin-bottom: 95px">
-                @php
-                    $totalQrCodesPagina = 0;
-                @endphp
-            @elseif ($i < 3)
-                <div class="row">
-            @else
-                <div class="row" style="margin-top: 27px;">
-            @endif
+        @if ($i == 10 || $totalQrCodesPagina == 12)
+            <div class="row" style="margin-top: 27px; margin-bottom: 95px">
+            @php
+                $totalQrCodesPagina = 0;
+            @endphp
+        @elseif ($i < 4)
+            <div class="row">
+        @else
+            <div class="row" style="margin-top: 27px;">
+        @endif
             <div class="col-4">
                 @if ($i <= $totalQrCodes)
                     <center>
@@ -53,17 +25,17 @@
                                 Cardápio Country
                             </strong>
                         </h3>
-                        {!! QrCode::size(80)->generate($url . $qrCodes[$i]) !!}
+                        {!! QrCode::size(120)->generate($url . $item) !!}
                         <h5>
                             <strong>
-                                MESA {!! $qrCodes[$i] !!}
+                                MESA {!! $item !!}
                             </strong>
                         </h5>
                         <h6>Aponte a câmera para o <br>QR Code e acesse o menu</h6>
                     </center>
                     @php
-                        $i++;
-                        $totalQrCodesPagina++;
+                    $i++;
+                    $totalQrCodesPagina++;
                     @endphp
                 @endif
             </div>
@@ -75,17 +47,17 @@
                                 Cardápio Country
                             </strong>
                         </h3>
-                        {!! QrCode::size(80)->generate($url . $qrCodes[$i]) !!}
+                        {!! QrCode::size(120)->generate($url . $item) !!}
                         <h5>
                             <strong>
-                                MESA {!! $qrCodes[$i] !!}
+                                MESA {!! $item !!}
                             </strong>
                         </h5>
                         <h6>Aponte a câmera para o <br>QR Code e acesse o menu</h6>
                     </center>
                     @php
-                        $i++;
-                        $totalQrCodesPagina++;
+                    $i++;
+                    $totalQrCodesPagina++;
                     @endphp
                 @endif
             </div>
@@ -97,10 +69,10 @@
                                 Cardápio Country
                             </strong>
                         </h3>
-                        {!! QrCode::size(80)->generate($url . $qrCodes[$i]) !!}
+                        {!! QrCode::size(120)->generate($url . $item) !!}
                         <h5>
                             <strong>
-                                MESA {!! $qrCodes[$i] !!}
+                                MESA {!! $item !!}
                             </strong>
                         </h5>
                         <h6>Aponte a câmera para o <br>QR Code e acesse o menu</h6>
@@ -111,7 +83,8 @@
                 @endif
             </div>
         </div>
-    @endfor
+        @php
+        $i++;
+        @endphp
 </body>
-
 </html>

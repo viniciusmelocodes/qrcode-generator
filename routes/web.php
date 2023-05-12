@@ -14,8 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/gerar-lista-qrcode', [QrCodeController::class, 'index']);
+Route::get('/', [QrCodeController::class, 'index']);
