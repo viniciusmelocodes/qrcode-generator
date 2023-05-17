@@ -19,12 +19,12 @@
 
         .titulo {
             font-family: "PlayfairDisplay";
+            color: red;
         }
 
-        h3, h5, h6 {
+        .titulo-mesa, .informacao {
             font-family: "TiltNeon";
             color: red;
-            margin-top: 3px;
         }
     </style>
 </head>
@@ -33,33 +33,33 @@
     @php
         $url = 'https://sistemas.countryclubedegoias.com.br/webApp/components/menu.jsf?mesa=';
         $totalQrCodesPagina = 0;
+        $totalQrCodes = count($qrCodes);
+        // $totalQrCodes = 90;
     @endphp
-    @for ($i = 0; $i < count($qrCodes); $i++)
-            @if ($i == 9 || $totalQrCodesPagina == 11)
-                <div class="row" style="margin-top: 27px; margin-bottom: 95px">
+    @for ($i = 0; $i < $totalQrCodes; $i++)
+            @if ($i == 12 || $totalQrCodesPagina == 15)
+                <div class="row" style="margin-top: 34px; margin-bottom: 95px">
                 @php
                     $totalQrCodesPagina = 0;
                 @endphp
-            @elseif ($i < 3)
-                <div class="row">
             @else
-                <div class="row" style="margin-top: 27px;">
+                <div class="row" style="margin-top: 34px;">
             @endif
             <div class="col-4">
                 @if ($i <= $totalQrCodes)
                     <center>
-                        <h3 class="titulo">
+                        <h6 class="titulo">
                             <strong>
                                 Cardápio Country
                             </strong>
-                        </h3>
-                        {!! QrCode::size(80)->generate($url . $qrCodes[$i]) !!}
-                        <h5>
+                        </h6>
+                        {!! QrCode::size(65)->generate($url . $qrCodes[$i]) !!}
+                        <h3 class="titulo-mesa">
                             <strong>
                                 MESA {!! $qrCodes[$i] !!}
                             </strong>
-                        </h5>
-                        <h6>Aponte a câmera para o <br>QR Code e acesse o menu</h6>
+                        </h3>
+                        <h6 class="informacao">Aponte a câmera para o <br>QR Code e acesse o menu</h6>
                     </center>
                     @php
                         $i++;
@@ -70,18 +70,18 @@
             <div class="col-4">
                 @if ($i <= $totalQrCodes)
                     <center>
-                        <h3 class="titulo">
+                        <h6 class="titulo">
                             <strong>
                                 Cardápio Country
                             </strong>
-                        </h3>
-                        {!! QrCode::size(80)->generate($url . $qrCodes[$i]) !!}
-                        <h5>
+                        </h6>
+                        {!! QrCode::size(65)->generate($url . $qrCodes[$i]) !!}
+                        <h3 class="titulo-mesa">
                             <strong>
                                 MESA {!! $qrCodes[$i] !!}
                             </strong>
-                        </h5>
-                        <h6>Aponte a câmera para o <br>QR Code e acesse o menu</h6>
+                        </h3>
+                        <h6 class="informacao">Aponte a câmera para o <br>QR Code e acesse o menu</h6>
                     </center>
                     @php
                         $i++;
@@ -92,22 +92,75 @@
             <div class="col-4">
                 @if ($i <= $totalQrCodes)
                     <center>
-                        <h3 class="titulo">
+                        <h6 class="titulo">
                             <strong>
                                 Cardápio Country
                             </strong>
-                        </h3>
-                        {!! QrCode::size(80)->generate($url . $qrCodes[$i]) !!}
-                        <h5>
+                        </h6>
+                        {!! QrCode::size(65)->generate($url . $qrCodes[$i]) !!}
+                        <h3 class="titulo-mesa">
                             <strong>
                                 MESA {!! $qrCodes[$i] !!}
                             </strong>
-                        </h5>
-                        <h6>Aponte a câmera para o <br>QR Code e acesse o menu</h6>
+                        </h3>
+                        <h6 class="informacao">Aponte a câmera para o <br>QR Code e acesse o menu</h6>
                     </center>
                     @php
                         $totalQrCodesPagina++;
                     @endphp
+                @endif
+            </div>
+        </div>
+    @endfor
+
+    <hr>
+    <center>Lista de Códigos:</center>
+
+    @for ($i = 0; $i < $totalQrCodes; $i++)
+        <div class="row">
+            <div class="col-2">
+                @if ($i < $totalQrCodes)
+                    <p>{!! $qrCodes[$i] !!}</p>
+                    @php
+                        $i++;
+                    @endphp
+                @endif
+            </div>
+            <div class="col-2">
+                @if ($i < $totalQrCodes)
+                    <p>{!! $qrCodes[$i] !!}</p>
+                    @php
+                        $i++;
+                    @endphp
+                @endif
+            </div>
+            <div class="col-2">
+                @if ($i < $totalQrCodes)
+                    <p>{!! $qrCodes[$i] !!}</p>
+                    @php
+                        $i++;
+                    @endphp
+                @endif
+            </div>
+            <div class="col-2">
+                @if ($i < $totalQrCodes)
+                    <p>{!! $qrCodes[$i] !!}</p>
+                    @php
+                        $i++;
+                    @endphp
+                @endif
+            </div>
+            <div class="col-2">
+                @if ($i < $totalQrCodes)
+                    <p>{!! $qrCodes[$i] !!}</p>
+                    @php
+                        $i++;
+                    @endphp
+                @endif
+            </div>
+            <div class="col-2">
+                @if ($i < $totalQrCodes)
+                    <p>{!! $qrCodes[$i] !!}</p>
                 @endif
             </div>
         </div>
