@@ -22,7 +22,13 @@
             color: red;
         }
 
-        .titulo-mesa, .informacao {
+        .titulo-mesa {
+            font-family: "TiltNeon";
+            color: red;
+            font-size: 33px;
+        }
+        
+        .informacao {
             font-family: "TiltNeon";
             color: red;
         }
@@ -30,6 +36,9 @@
 </head>
 
 <body>
+    {{-- <div class="row">
+        <img src="{{ asset('assets/images/regua.png') }}" alt="" srcset="">
+    </div> --}}
     @php
         $url = 'https://sistemas.countryclubedegoias.com.br/webApp/components/menu.jsf?mesa=';
         $totalQrCodesPagina = 0;
@@ -37,13 +46,15 @@
         // $totalQrCodes = 90;
     @endphp
     @for ($i = 0; $i < $totalQrCodes; $i++)
-            @if ($i == 12 || $totalQrCodesPagina == 15)
-                <div class="row" style="margin-top: 34px; margin-bottom: 95px">
+            @if ($i == 9 || $totalQrCodesPagina == 12)
+                <div class="row" style="margin-top: 30px; margin-bottom: 165px">
                 @php
                     $totalQrCodesPagina = 0;
                 @endphp
+            @elseif ($i < 3)
+                <div class="row">
             @else
-                <div class="row" style="margin-top: 34px;">
+                <div class="row" style="margin-top: 30px;">
             @endif
             <div class="col-4">
                 @if ($i <= $totalQrCodes)
@@ -54,11 +65,11 @@
                             </strong>
                         </h6>
                         {!! QrCode::size(65)->generate($url . $qrCodes[$i]) !!}
-                        <h3 class="titulo-mesa">
+                        <p class="titulo-mesa">
                             <strong>
                                 MESA {!! $qrCodes[$i] !!}
                             </strong>
-                        </h3>
+                        </p>
                         <h6 class="informacao">Aponte a câmera para o <br>QR Code e acesse o menu</h6>
                     </center>
                     @php
@@ -76,11 +87,11 @@
                             </strong>
                         </h6>
                         {!! QrCode::size(65)->generate($url . $qrCodes[$i]) !!}
-                        <h3 class="titulo-mesa">
+                        <p class="titulo-mesa">
                             <strong>
                                 MESA {!! $qrCodes[$i] !!}
                             </strong>
-                        </h3>
+                        </p>
                         <h6 class="informacao">Aponte a câmera para o <br>QR Code e acesse o menu</h6>
                     </center>
                     @php
@@ -98,11 +109,11 @@
                             </strong>
                         </h6>
                         {!! QrCode::size(65)->generate($url . $qrCodes[$i]) !!}
-                        <h3 class="titulo-mesa">
+                        <p class="titulo-mesa">
                             <strong>
                                 MESA {!! $qrCodes[$i] !!}
                             </strong>
-                        </h3>
+                        </p>
                         <h6 class="informacao">Aponte a câmera para o <br>QR Code e acesse o menu</h6>
                     </center>
                     @php
