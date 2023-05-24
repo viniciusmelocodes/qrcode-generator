@@ -8,33 +8,37 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css">
 
+    <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Tilt Neon' rel='stylesheet'>
+
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
 
     <style>
-        @font-face {
+        /* @font-face {
             font-family: "PlayfairDisplay";
             src: url("{{ asset('/assets/fonts/PlayfairDisplay-Bold.ttf') }}") format("truetype");
         }
-        
+
         @font-face {
             font-family: "TiltNeon";
             src: url("{{ asset('/assets/fonts/TiltNeon-Regular.ttf') }}") format("truetype");
-        }
+        } */
 
         .titulo {
-            font-family: "PlayfairDisplay";
+            font-family: "Playfair Display";
             color: red;
+            /* font-style: bold */
         }
 
         .titulo-mesa {
-            font-family: "TiltNeon";
+            font-family: "Tilt Neon";
             color: red;
             font-size: 33px;
         }
         
         .informacao {
-            font-family: "TiltNeon";
+            font-family: "Tilt Neon";
             color: red;
         }
 
@@ -48,7 +52,7 @@
         }
 
         .mlcol4 {
-            margin-left: 120px;
+            margin-left: 50px;
         }
     </style>
 </head>
@@ -76,11 +80,11 @@
                                 </strong>
                             </h6>
                             {!! QrCode::size(65)->generate($url . $qrCodes[$i]) !!}
-                            <p class="titulo-mesa">
+                            <h2 class="titulo-mesa">
                                 <strong>
                                     MESA {!! $qrCodes[$i] !!}
                                 </strong>
-                            </p>
+                            </h2>
                             <h6 class="informacao">Aponte a câmera para o <br>QR Code e acesse o menu</h6>
                         </center>
                     </div>
