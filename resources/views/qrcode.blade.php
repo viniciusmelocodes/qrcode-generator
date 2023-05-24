@@ -48,7 +48,7 @@
         }
 
         .wcol4 {
-            width: 235px;
+            width: 255px;
         }
 
         .mlcol4 {
