@@ -5,13 +5,18 @@
     <meta charset="utf-8">
     <title>Lista de QRCodes</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
 
     <style>
         @font-face {
             font-family: "PlayfairDisplay";
             src: url("{{ asset('/assets/fonts/PlayfairDisplay-Bold.ttf') }}") format("truetype");
         }
+        
         @font-face {
             font-family: "TiltNeon";
             src: url("{{ asset('/assets/fonts/TiltNeon-Regular.ttf') }}") format("truetype");
@@ -32,6 +37,19 @@
             font-family: "TiltNeon";
             color: red;
         }
+
+        .espacamento {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .wcol4 {
+            width: 235px;
+        }
+
+        .mlcol4 {
+            margin-left: 120px;
+        }
     </style>
 </head>
 
@@ -46,136 +64,45 @@
         // $totalQrCodes = 90;
     @endphp
     @for ($i = 0; $i < $totalQrCodes; $i++)
-            @if ($i == 9 || $totalQrCodesPagina == 12)
-                <div class="row" style="margin-top: 30px; margin-bottom: 165px">
-                @php
-                    $totalQrCodesPagina = 0;
-                @endphp
-            @elseif ($i < 3)
-                <div class="row">
-            @else
-                <div class="row" style="margin-top: 30px;">
-            @endif
-            <div class="col-4">
-                @if ($i <= $totalQrCodes)
-                    <center>
-                        <h6 class="titulo">
-                            <strong>
-                                Cardápio Country
-                            </strong>
-                        </h6>
-                        {!! QrCode::size(65)->generate($url . $qrCodes[$i]) !!}
-                        <p class="titulo-mesa">
-                            <strong>
-                                MESA {!! $qrCodes[$i] !!}
-                            </strong>
-                        </p>
-                        <h6 class="informacao">Aponte a câmera para o <br>QR Code e acesse o menu</h6>
-                    </center>
-                    @php
-                        $i++;
-                        $totalQrCodesPagina++;
-                    @endphp
-                @endif
+        <div class="row espacamento">
+            <div class="col-4"></div>
+            <div class="col-4 wcol4 mlcol4">
+                <div class="card border-danger">
+                    <div class="card-body" style="padding: 3px !important;">
+                        <center>
+                            <h6 class="titulo">
+                                <strong>
+                                    Cardápio Country
+                                </strong>
+                            </h6>
+                            {!! QrCode::size(65)->generate($url . $qrCodes[$i]) !!}
+                            <p class="titulo-mesa">
+                                <strong>
+                                    MESA {!! $qrCodes[$i] !!}
+                                </strong>
+                            </p>
+                            <h6 class="informacao">Aponte a câmera para o <br>QR Code e acesse o menu</h6>
+                        </center>
+                    </div>
+                </div>
             </div>
-            <div class="col-4">
-                @if ($i <= $totalQrCodes)
-                    <center>
-                        <h6 class="titulo">
-                            <strong>
-                                Cardápio Country
-                            </strong>
-                        </h6>
-                        {!! QrCode::size(65)->generate($url . $qrCodes[$i]) !!}
-                        <p class="titulo-mesa">
-                            <strong>
-                                MESA {!! $qrCodes[$i] !!}
-                            </strong>
-                        </p>
-                        <h6 class="informacao">Aponte a câmera para o <br>QR Code e acesse o menu</h6>
-                    </center>
-                    @php
-                        $i++;
-                        $totalQrCodesPagina++;
-                    @endphp
-                @endif
-            </div>
-            <div class="col-4">
-                @if ($i <= $totalQrCodes)
-                    <center>
-                        <h6 class="titulo">
-                            <strong>
-                                Cardápio Country
-                            </strong>
-                        </h6>
-                        {!! QrCode::size(65)->generate($url . $qrCodes[$i]) !!}
-                        <p class="titulo-mesa">
-                            <strong>
-                                MESA {!! $qrCodes[$i] !!}
-                            </strong>
-                        </p>
-                        <h6 class="informacao">Aponte a câmera para o <br>QR Code e acesse o menu</h6>
-                    </center>
-                    @php
-                        $totalQrCodesPagina++;
-                    @endphp
-                @endif
-            </div>
+            <div class="col-4"></div>
         </div>
-    @endfor
-
-    <hr>
-    <center>Lista de Códigos:</center>
-
-    @for ($i = 0; $i < $totalQrCodes; $i++)
-        <div class="row">
-            <div class="col-2">
-                @if ($i < $totalQrCodes)
-                    <p>{!! $qrCodes[$i] !!}</p>
-                    @php
-                        $i++;
-                    @endphp
-                @endif
-            </div>
-            <div class="col-2">
-                @if ($i < $totalQrCodes)
-                    <p>{!! $qrCodes[$i] !!}</p>
-                    @php
-                        $i++;
-                    @endphp
-                @endif
-            </div>
-            <div class="col-2">
-                @if ($i < $totalQrCodes)
-                    <p>{!! $qrCodes[$i] !!}</p>
-                    @php
-                        $i++;
-                    @endphp
-                @endif
-            </div>
-            <div class="col-2">
-                @if ($i < $totalQrCodes)
-                    <p>{!! $qrCodes[$i] !!}</p>
-                    @php
-                        $i++;
-                    @endphp
-                @endif
-            </div>
-            <div class="col-2">
-                @if ($i < $totalQrCodes)
-                    <p>{!! $qrCodes[$i] !!}</p>
-                    @php
-                        $i++;
-                    @endphp
-                @endif
-            </div>
-            <div class="col-2">
-                @if ($i < $totalQrCodes)
-                    <p>{!! $qrCodes[$i] !!}</p>
-                @endif
-            </div>
+        <div class="container">
+            <hr>
         </div>
     @endfor
 </body>
+
+<script>
+    $(function() {
+        Swal.fire({
+            title:'Pronto',
+            html: 'Tudo foi gerado com sucesso.',
+            icon: 'success',
+            timer: 2500
+        })
+    })
+</script>
 
 </html>
